@@ -6,6 +6,30 @@ The `gedi_canopy_height` Python package generates rasters of the [Global Forest 
 [gregory.h.halverson@jpl.nasa.gov](mailto:gregory.h.halverson@jpl.nasa.gov)<br>
 NASA Jet Propulsion Laboratory 329G
 
+## Prerequisites
+
+This packages uses the `wget` command line tool and the `gdal` command line tools.
+
+On macOS, these can be installed with Homebrew:
+
+```
+brew install wget
+```
+
+```
+brew install gdal
+```
+
+These tools can also be installed with `mamba`:
+
+```
+mamba install wget
+```
+
+```
+mamba install gdal
+```
+
 ## Installation
 
 This package is available on PyPi as a [pip package](https://pypi.org/project/gedi-canopy-height/) called `gedi-canopy-height` with dashes.
