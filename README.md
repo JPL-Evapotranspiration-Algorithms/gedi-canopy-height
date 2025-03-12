@@ -1,6 +1,8 @@
-# `gedi_canopy_height` Python Package
+# `gedi-canopy-height` Python Package
 
-The `gedi_canopy_height` Python package generates rasters of the [Global Forest Canopy Height 2019](https://glad.umd.edu/dataset/gedi/) dataset derived from Global Ecosystem Dynamics Investigation (GEDI).
+[![CI](https://github.com/JPL-Evapotranspiration-Algorithms/gedi-canopy-height/actions/workflows/ci.yml/badge.svg)](https://github.com/JPL-Evapotranspiration-Algorithms/gedi-canopy-height/actions/workflows/ci.yml)
+
+The `gedi-canopy-height` Python package generates rasters of the [Global Forest Canopy Height 2019](https://glad.umd.edu/dataset/gedi/) dataset derived from Global Ecosystem Dynamics Investigation (GEDI).
 
 [Gregory H. Halverson](https://github.com/gregory-halverson-jpl) (they/them)<br>
 [gregory.h.halverson@jpl.nasa.gov](mailto:gregory.h.halverson@jpl.nasa.gov)<br>
