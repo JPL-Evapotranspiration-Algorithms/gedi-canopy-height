@@ -129,3 +129,12 @@ class GEDICanopyHeight:
             resampling=resampling,
             cmap=CANOPY_COLORMAP
         )
+
+def load_canopy_height(
+        geometry: RasterGeometry, 
+        resampling: str = "cubic", 
+        source_directory: str = "~/data/gedi_canopy_height") -> Raster:
+    gedi = GEDICanopyHeight(source_directory=source_directory)
+    canopy_height_meters = gedi.canopy_height_meters(geometry=geometry, resampling=resampling)
+
+    return canopy_height_meters
