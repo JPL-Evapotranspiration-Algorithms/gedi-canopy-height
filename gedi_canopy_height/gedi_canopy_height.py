@@ -12,6 +12,8 @@ from matplotlib.colors import LinearSegmentedColormap
 import rasters as rt
 from rasters import RasterGeometry, Raster
 
+GEDI_DOWNLOAD_DIRECTORY = join("~", "data", "gedi-canopy-height")
+
 CANOPY_COLORMAP = LinearSegmentedColormap.from_list(
     name="canopy_height",
     colors=[
@@ -35,21 +37,25 @@ class GEDICanopyHeight:
 
     logger = logging.getLogger(__name__)
 
-    def __init__(self, source_directory: str):
+    def __init__(self, source_directory: str = GEDI_DOWNLOAD_DIRECTORY):
         self.source_directory = source_directory
 
     def __repr__(self) -> str:
         return f'GEDICanopyHeight(source_directory="{self.source_directory}")'
 
     def download_file(self, URL: str, filename: str) -> str:
-        if exists(filename):
+        filename_absolute = abspath(expanduser(filename))
+
+        print(filename_absolute, exists(filename_absolute))
+
+        if exists(filename_absolute):
             self.logger.info(f"file already downloaded: {filename}")
             return filename
 
         self.logger.info(f"downloading: {URL} -> {filename}")
-        directory = dirname(filename)
+        directory = dirname(filename_absolute)
         makedirs(directory, exist_ok=True)
-        partial_filename = f"{filename}.download"
+        partial_filename = f"{filename_absolute}.download"
         command = f'wget -c -O "{partial_filename}" "{URL}"'
         download_start = perf_counter()
         # system(command)
@@ -60,7 +66,7 @@ class GEDICanopyHeight:
         if not exists(partial_filename):
             raise IOError(f"unable to download URL: {URL}")
 
-        move(partial_filename, filename)
+        move(partial_filename, filename_absolute)
 
         return filename
 
@@ -133,7 +139,7 @@ class GEDICanopyHeight:
 def load_canopy_height(
         geometry: RasterGeometry, 
         resampling: str = "cubic", 
-        source_directory: str = "~/data/gedi_canopy_height") -> Raster:
+        source_directory: str = GEDI_DOWNLOAD_DIRECTORY) -> Raster:
     gedi = GEDICanopyHeight(source_directory=source_directory)
     canopy_height_meters = gedi.canopy_height_meters(geometry=geometry, resampling=resampling)
 
