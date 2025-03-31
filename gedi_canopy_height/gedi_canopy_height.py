@@ -58,7 +58,7 @@ class GEDICanopyHeight:
         partial_filename = f"{filename_absolute}.download"
         command = f'wget -c -O "{partial_filename}" "{URL}"'
         download_start = perf_counter()
-        # system(command)
+        system(command)
         download_end = perf_counter()
         download_duration = download_end - download_start
         self.logger.info(f"completed download in {download_duration:0.2f} seconds: {filename}")
