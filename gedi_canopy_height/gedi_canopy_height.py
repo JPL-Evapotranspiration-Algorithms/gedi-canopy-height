@@ -12,6 +12,8 @@ from matplotlib.colors import LinearSegmentedColormap
 import rasters as rt
 from rasters import RasterGeometry, Raster
 
+from .download import download
+
 GEDI_DOWNLOAD_DIRECTORY = join("~", "data", "gedi-canopy-height")
 
 CANOPY_COLORMAP = LinearSegmentedColormap.from_list(
@@ -56,9 +58,10 @@ class GEDICanopyHeight:
         directory = dirname(filename_absolute)
         makedirs(directory, exist_ok=True)
         partial_filename = f"{filename_absolute}.download"
-        command = f'wget -c -O "{partial_filename}" "{URL}"'
+        # command = f'wget -c -O "{partial_filename}" "{URL}"'
         download_start = perf_counter()
-        system(command)
+        # system(command)
+        download(URL, partial_filename)
         download_end = perf_counter()
         download_duration = download_end - download_start
         self.logger.info(f"completed download in {download_duration:0.2f} seconds: {filename}")

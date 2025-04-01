@@ -3,7 +3,7 @@ requires = ["setuptools>=60", "setuptools-scm>=8.0", "wheel"]
 
 [project]
 name = "gedi-canopy-height"
-version = "1.1.2"
+version = "1.2.0"
 description = "generates rasters of canopy height from the Global Ecosystem Dynamics Investigation (GEDI) mission"
 readme = "README.md"
 authors = [
