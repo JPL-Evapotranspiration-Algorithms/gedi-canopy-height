@@ -45,7 +45,7 @@ pip install gedi-canopy-height
 Import this package as `gedi_canopy_height` with under-scores.
 
 ```python
-import gedi_canopy_height
+from gedi_canopy_height import load_canopy_height
 ```
 
 ## References
