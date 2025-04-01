@@ -128,6 +128,8 @@ class GEDICanopyHeight:
 
         if not exists(self.VRT_filename):
             raise IOError(f"unable to produce canopy height VRT: {self.VRT_filename}")
+        
+        return self.VRT_filename
 
     def canopy_height_meters(self, geometry: RasterGeometry, resampling=None) -> Raster:
         return rt.Raster.open(
